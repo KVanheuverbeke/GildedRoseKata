@@ -1,11 +1,15 @@
 package com.gildedrose;
 
-public class LegendaryItem extends StandardItem implements ItemInterface {
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+public class LegendaryItem implements ItemInterface {
+
+    private Item item;
 
     @Override
     public void updateQualityAndSellIn() {
-        //TODO replace by correct code
-        super.updateQualityAndSellIn();
+        //do noting, values remain the same
     }
 
 }

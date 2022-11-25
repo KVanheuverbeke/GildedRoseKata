@@ -3,23 +3,14 @@ package com.gildedrose;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class BackstageItem implements ItemInterface {
+public class AgedBrieItem extends StandardItem implements ItemInterface {
 
     private Item item;
 
     @Override
     public void updateQualityAndSellIn() {
         setSellIn(getSellIn() - 1);
-
-        if (getSellIn() >= 10) {
-            setQuality(getQuality() + 1);
-        } else if (getSellIn() >= 5) {
-            setQuality(getQuality() + 2);
-        } else if (getSellIn() >= 0) {
-            setQuality(getQuality() + 3);
-        } else {
-            setQuality(0);
-        }
+        setQuality(getQuality() + 1);
 
         if (getQuality() > MAXQUAL) {
             setQuality(MAXQUAL);
@@ -41,5 +32,4 @@ public class BackstageItem implements ItemInterface {
     private void setQuality(int quality) {
         this.item.quality = quality;
     }
-
 }

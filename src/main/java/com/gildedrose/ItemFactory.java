@@ -5,21 +5,24 @@ public class ItemFactory {
     private ItemFactory() {
     }
 
-    public static StandardItem getStandardItem(String name) {
+    public static ItemInterface defineItemType(Item item) {
+        String name = item.name;
 
-        switch (Items.valueOf(name.substring(0, 6))) {
-            case AGEDCH:
-                return new AgedCheeseItem();
-
-            case  BACKST:
-                return new BackstageItem();
-
-            case LEGEND:
-                return new LegendaryItem();
-
-            default:
-                return new StandardItem();
+        //Better would be adding a "type" to class Item, but the goblin doesn't allow it
+        if (name.startsWith("Aged Brie")) {
+            return new AgedBrieItem(item);
         }
 
+        if (name.startsWith("Backstage passes")) {
+            return new BackstageItem(item);
+        }
+
+        if (name.startsWith("Sulfuras")) {
+            return new LegendaryItem(item);
+        }
+
+        return new StandardItem(item);
+
     }
+
 }
