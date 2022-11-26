@@ -21,6 +21,10 @@ public class ItemFactory {
             return new LegendaryItem(item);
         }
 
+        if (name.startsWith("Conjured")) {
+            return new ConjuredItem(item);
+        }
+
         return new StandardItem(item);
 
     }

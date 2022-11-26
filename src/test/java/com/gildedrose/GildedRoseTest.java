@@ -148,11 +148,9 @@ class GildedRoseTest {
         assertEquals(0, getQuality(app));
     }
 
-    //TODO
-    /*
     @Test
     void conjuredItemSellInDecrease() {
-        GildedRose app = makeGildedRose("Conjured Mana Cake", 3, 6);
+        GildedRose app = newGildedRose("Conjured Mana Cake", 3, 6);
         app.updateQuality();
         assertEquals(2, getSellIn(app));
         app.updateQuality();
@@ -161,11 +159,17 @@ class GildedRoseTest {
 
     @Test
     void conjuredItemQualityDegrade() {
-        GildedRose app = makeGildedRose("Conjured Mana Cake", 3, 6);
+        GildedRose app = newGildedRose("Conjured Mana Cake", 3, 6);
         app.updateQuality();
         assertEquals(4, getQuality(app));
+        app.updateQuality();
+        assertEquals(2, getQuality(app));
+        app.updateQuality();
+        assertEquals(0, getQuality(app));
+        app.updateQuality();
+        assertEquals(0, getQuality(app));
     }
-     */
+
 
     private GildedRose newGildedRose(String itemName, int itemSellIn, int itemQuality) {
         Item[] items = new Item[]{new Item(itemName, itemSellIn, itemQuality)};
