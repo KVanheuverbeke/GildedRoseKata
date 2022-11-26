@@ -10,5 +10,4 @@ bin/
 # Gradle
 .gradle
 /build/
-
 /texttests/

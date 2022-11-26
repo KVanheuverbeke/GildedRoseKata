@@ -3,14 +3,18 @@ package com.gildedrose;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class AgedBrieItem extends StandardItem implements ItemInterface {
+public class AgedBrieItem implements ItemInterface {
 
     private Item item;
 
     @Override
     public void updateQualityAndSellIn() {
         setSellIn(getSellIn() - 1);
-        setQuality(getQuality() + 1);
+        if (getSellIn() < 0) {
+            setQuality(getQuality() + 2);
+        } else {
+            setQuality(getQuality() + 1);
+        }
 
         if (getQuality() > MAXQUAL) {
             setQuality(MAXQUAL);

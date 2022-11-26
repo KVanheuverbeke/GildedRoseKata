@@ -15,6 +15,12 @@ class GildedRoseTest {
     }
 
     @Test
+    void toStringTest() {
+        Item item = new Item("foo", 0, 0);
+        assertEquals("foo, 0, 0", item.toString());
+    }
+
+    @Test
     void standardItemSellInDecrease() {
         GildedRose app = newGildedRose("+5 Dexterity Vest", 10, 20);
         app.updateQuality();
@@ -57,6 +63,8 @@ class GildedRoseTest {
         assertEquals(1, getSellIn(app));
         app.updateQuality();
         assertEquals(0, getSellIn(app));
+        app.updateQuality();
+        assertEquals(-1, getSellIn(app));
     }
 
     @Test
@@ -65,6 +73,10 @@ class GildedRoseTest {
         app.updateQuality();
         //"Aged Brie" actually increases in Quality the older it gets
         assertEquals(1, getQuality(app));
+        app.updateQuality();
+        assertEquals(2, getQuality(app));
+        app.updateQuality();
+        assertEquals(4, getQuality(app));
     }
 
     @Test
