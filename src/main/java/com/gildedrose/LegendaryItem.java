@@ -9,7 +9,8 @@ public class LegendaryItem implements ItemInterface {
 
     @Override
     public void updateQualityAndSellIn() {
-        //do noting, values remain the same
+        //do nothing, values remain the same
+        item.quality = LEGENDARYMAXQUALITY;
     }
 
 }

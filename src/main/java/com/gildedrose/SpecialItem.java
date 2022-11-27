@@ -1,23 +1,20 @@
 package com.gildedrose;
 
-public class BackstageItem extends SpecialItem {
+public class SpecialItem extends StandardItem {
 
-    public BackstageItem(Item item) {
+    public SpecialItem(Item item) {
         super(item);
     }
 
     @Override
     protected int updateQuality(int quality, int sellIn, int rate) {
         int newQuality;
-        if (sellIn >= 10) {
-            newQuality = quality + rate;
-        } else if (sellIn >= 5) {
+        if (sellIn < 0) {
             newQuality = quality + (rate * 2);
-        } else if (sellIn >= 0) {
-            newQuality = quality + (rate * 3);
         } else {
-            newQuality = 0;
+            newQuality = quality + rate;
         }
+
         if (newQuality > MAXQUAL) {
             newQuality = MAXQUAL;
         }

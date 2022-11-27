@@ -1,42 +1,38 @@
 package com.gildedrose;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class StandardItem implements ItemInterface {
 
     private Item item;
 
     @Override
     public void updateQualityAndSellIn() {
-        setSellIn(getSellIn() - 1);
+        //The goblin should have added Getters and Setters in Item
+        this.item.sellIn = updateSellIn(this.item.sellIn, UPDATERATE);
+        this.item.quality = updateQuality(this.item.quality, this.item.sellIn, UPDATERATE);
+    }
 
-        if (getSellIn() < 0) {
-            setQuality(getQuality() - 2);
+    protected int updateSellIn(int sellIn, int rate) {
+        return sellIn - rate;
+    }
+
+    protected int updateQuality(int quality, int sellIn, int rate) {
+        int newQuality;
+        if (sellIn < 0) {
+            newQuality = quality - (rate * 2);
         } else {
-            setQuality(getQuality() - 1);
+            newQuality = quality - rate;
         }
-
-        if (getQuality() < 0) {
-            setQuality(0);
+        if (newQuality < 0) {
+            newQuality = 0;
         }
+        return newQuality;
     }
 
-    private int getSellIn() {
-        return this.item.sellIn;
-    }
-
-    private void setSellIn(int sellIn) {
-        this.item.sellIn = sellIn;
-    }
-
-    private int getQuality() {
-        return this.item.quality;
-    }
-
-    private void setQuality(int quality) {
-        this.item.quality = quality;
-    }
 }

@@ -10,7 +10,7 @@ public class ItemFactory {
 
         //Better would be adding a "type" to class Item, but the goblin doesn't allow it
         if (name.startsWith("Aged Brie")) {
-            return new AgedBrieItem(item);
+            return new SpecialItem(item);
         }
 
         if (name.startsWith("Backstage passes")) {
